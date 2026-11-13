@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+<rect width="1080" height="1920" fill="#FF6B4A"/>
+<circle cx="960" cy="576.0" r="260" fill="#FFF8F0" opacity=".9"/>
+<circle cx="1020" cy="806.0" r="90" fill="none" stroke="#14213D" stroke-width="10" opacity=".35"/>
+<text x="850" y="646.0" font-size="200" text-anchor="middle" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🎤</text>
+<g transform="translate(80,80) scale(1.4)"><rect width="64" height="64" rx="16" fill="#FF6B4A"/><path d="M18 14h13c11 0 18 7 18 18s-7 18-18 18H18z" fill="#fff"/><path d="M34 19l-8 15h7l-3 11 10-16h-7l4-10z" fill="#14213D"/></g>
+<text x="185" y="140" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="46" fill="#14213D">Déclic</text>
+<text x="80" y="1016.0" font-family="Poppins,Arial,sans-serif" font-weight="700" font-size="34" letter-spacing="4" fill="#FFF8F0">MICRO-TROTTOIR · PARIS</text>
+<text x="80" y="1116.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="92" fill="#14213D">« Le sport que</text>
+<text x="80" y="1220.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="92" fill="#FFF8F0">tu rêves</text>
+<text x="80" y="1324.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="92" fill="#14213D">de tester ? »</text>
+<text x="80" y="1458.0" font-family="Poppins,Arial,sans-serif" font-weight="500" font-size="38" fill="#14213D" opacity=".85">On a posé la question</text>
+<text x="80" y="1508.0" font-family="Poppins,Arial,sans-serif" font-weight="500" font-size="38" fill="#14213D" opacity=".85">à 20 Parisien·nes.</text>
+<rect x="80" y="1770" width="384" height="70" rx="35" fill="#FFF8F0"/>
+<text x="110" y="1817" font-family="Poppins,Arial,sans-serif" font-weight="700" font-size="34" fill="#14213D">Ta réponse en com&#x27;</text>
+<text x="1000" y="140" text-anchor="end" font-family="Poppins,Arial,sans-serif" font-size="26" fill="#14213D" opacity=".6">Visuel démo · projet étudiant</text>
+</svg>

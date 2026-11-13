@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+<rect width="1080" height="1920" fill="#D7F75B"/>
+<rect x="-200" y="-100" width="40" height="2120" fill="#14213D" opacity=".18" transform="rotate(25 540.0 960.0)"/>
+<rect x="-110" y="-100" width="40" height="2120" fill="#14213D" opacity=".18" transform="rotate(25 540.0 960.0)"/>
+<rect x="-20" y="-100" width="40" height="2120" fill="#14213D" opacity=".18" transform="rotate(25 540.0 960.0)"/>
+<rect x="70" y="-100" width="40" height="2120" fill="#14213D" opacity=".18" transform="rotate(25 540.0 960.0)"/>
+<rect x="160" y="-100" width="40" height="2120" fill="#14213D" opacity=".18" transform="rotate(25 540.0 960.0)"/>
+<rect x="250" y="-100" width="40" height="2120" fill="#14213D" opacity=".18" transform="rotate(25 540.0 960.0)"/>
+<text x="850" y="646.0" font-size="200" text-anchor="middle" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🧗‍♀️</text>
+<g transform="translate(80,80) scale(1.4)"><rect width="64" height="64" rx="16" fill="#FF6B4A"/><path d="M18 14h13c11 0 18 7 18 18s-7 18-18 18H18z" fill="#fff"/><path d="M34 19l-8 15h7l-3 11 10-16h-7l4-10z" fill="#14213D"/></g>
+<text x="185" y="140" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="46" fill="#14213D">Déclic</text>
+<text x="80" y="1016.0" font-family="Poppins,Arial,sans-serif" font-weight="700" font-size="34" letter-spacing="4" fill="#14213D">ESCALADE · DÉBUTANT</text>
+<text x="80" y="1116.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="92" fill="#14213D">3 erreurs</text>
+<text x="80" y="1220.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="92" fill="#14213D">de débutant</text>
+<text x="80" y="1324.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="92" fill="#14213D">en bloc</text>
+<text x="80" y="1458.0" font-family="Poppins,Arial,sans-serif" font-weight="500" font-size="38" fill="#14213D" opacity=".85">1. Grimper avec les bras</text>
+<text x="80" y="1508.0" font-family="Poppins,Arial,sans-serif" font-weight="500" font-size="38" fill="#14213D" opacity=".85">2. Oublier de regarder les pieds</text>
+<text x="80" y="1558.0" font-family="Poppins,Arial,sans-serif" font-weight="500" font-size="38" fill="#14213D" opacity=".85">3. Sauter de tout en haut</text>
+<rect x="80" y="1770" width="330" height="70" rx="35" fill="#14213D"/>
+<text x="110" y="1817" font-family="Poppins,Arial,sans-serif" font-weight="700" font-size="34" fill="#FFF8F0">Box de décembre</text>
+<text x="1000" y="140" text-anchor="end" font-family="Poppins,Arial,sans-serif" font-size="26" fill="#14213D" opacity=".6">Visuel démo · projet étudiant</text>
+</svg>

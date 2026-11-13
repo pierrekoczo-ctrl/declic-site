@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+<rect width="1080" height="1920" fill="#14213D"/>
+<circle cx="960" cy="576.0" r="260" fill="#FF6B4A" opacity=".9"/>
+<circle cx="1020" cy="806.0" r="90" fill="none" stroke="#FFF8F0" stroke-width="10" opacity=".35"/>
+<text x="850" y="646.0" font-size="200" text-anchor="middle" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">😅</text>
+<g transform="translate(80,80) scale(1.4)"><rect width="64" height="64" rx="16" fill="#FF6B4A"/><path d="M18 14h13c11 0 18 7 18 18s-7 18-18 18H18z" fill="#fff"/><path d="M34 19l-8 15h7l-3 11 10-16h-7l4-10z" fill="#14213D"/></g>
+<text x="185" y="140" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="46" fill="#FFF8F0">Déclic</text>
+<text x="80" y="1016.0" font-family="Poppins,Arial,sans-serif" font-weight="700" font-size="34" letter-spacing="4" fill="#FF6B4A">POV</text>
+<text x="80" y="1116.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="80" fill="#FFF8F0">Tu as payé</text>
+<text x="80" y="1208.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="80" fill="#FFF8F0">une salle</text>
+<text x="80" y="1300.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="80" fill="#FF6B4A">que tu n&#x27;as</text>
+<text x="80" y="1392.0" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="80" fill="#FF6B4A">jamais vue.</text>
+<text x="80" y="1514.0" font-family="Poppins,Arial,sans-serif" font-weight="500" font-size="38" fill="#FFF8F0" opacity=".85">Et si tu testais avant</text>
+<text x="80" y="1564.0" font-family="Poppins,Arial,sans-serif" font-weight="500" font-size="38" fill="#FFF8F0" opacity=".85">de t&#x27;engager ?</text>
+<rect x="80" y="1770" width="420" height="70" rx="35" fill="#FF6B4A"/>
+<text x="110" y="1817" font-family="Poppins,Arial,sans-serif" font-weight="700" font-size="34" fill="#14213D">TikTok · @declic.box</text>
+<text x="1000" y="140" text-anchor="end" font-family="Poppins,Arial,sans-serif" font-size="26" fill="#FFF8F0" opacity=".6">Visuel démo · projet étudiant</text>
+</svg>

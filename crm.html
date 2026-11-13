@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CRM interne · Déclic</title>
+<meta name="description" content="Déclic : chaque mois, un nouveau sport à tester à Paris avec une séance d'initiation encadrée, un kit et un guide. Projet étudiant INSEEC en mode démo.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+<div class="demo-banner" role="note">Projet étudiant INSEEC, démo sans vente réelle</div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Logo Déclic">Déclic</a>
+    <button class="menu-btn" aria-label="Ouvrir le menu">Menu</button>
+    <nav class="nav"><a href="index.html" class="">Vente<span class="tag">Offre & achat</span></a><a href="crm.html" class="active">CRM<span class="tag">Suivi clients</span></a><a href="strategie.html" class="">Stratégie<span class="tag">Pourquoi Déclic</span></a><a href="communication.html" class="">Communication<span class="tag">Comment vendre</span></a></nav>
+  </div>
+</header>
+<main>
+<section class="page-head" style="padding:32px 0">
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+    <div>
+      <div class="eyebrow" style="color:var(--lime)">Outil interne · côté entreprise</div>
+      <h1 style="font-size:clamp(1.7rem,4vw,2.4rem);margin:0">CRM Déclic</h1>
+      <p class="lead small" style="margin:6px 0 0">Accès démo libre, sans compte. Tous les contacts sont fictifs et stockés uniquement dans ce navigateur.</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn small light" id="addBtn">+ Nouveau contact</button>
+      <button class="btn small ghost" id="resetBtn" title="Recharger les 22 contacts de démo">Réinitialiser la démo</button>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:28px">
+  <div class="wrap">
+    <div id="importMsg" class="success" style="display:none;margin-bottom:16px"></div>
+    <div class="crm-tabs" role="tablist">
+      <button class="on" data-tab="dash">📊 Tableau de bord</button>
+      <button data-tab="contacts">👥 Contacts</button>
+      <button data-tab="pipeline">🧭 Pipeline</button>
+    </div>
+
+    <!-- Tableau de bord -->
+    <div id="tab-dash">
+      <div class="grid g4">
+        <div class="card"><div class="small muted">Chiffre d'affaires (clients gagnés)</div><div class="stat" id="kCA">-</div><div class="small muted" id="kCATTC"></div></div>
+        <div class="card"><div class="small muted">Nombre de clients</div><div class="stat" id="kClients">-</div><div class="small muted">contacts à l'étape « Gagné »</div></div>
+        <div class="card"><div class="small muted">Taux de conversion</div><div class="stat" id="kConv">-</div><div class="small muted" id="kConvDet"></div></div>
+        <div class="card"><div class="small muted">Pipeline en cours (propositions)</div><div class="stat" id="kPipe">-</div><div class="small muted" id="kPipeDet"></div></div>
+      </div>
+      <div class="grid g2" style="margin-top:20px">
+        <div class="card"><h3>Contacts par étape</h3><div id="byStage"></div></div>
+        <div class="card"><h3>Clients gagnés par source</h3><div id="bySource"></div></div>
+      </div>
+      <div class="card" style="margin-top:20px">
+        <h3>Prochaines actions</h3>
+        <div class="table-wrap"><table><thead><tr><th>Contact</th><th>Étape</th><th>Prochaine action</th><th>Échéance</th></tr></thead><tbody id="nextActions"></tbody></table></div>
+      </div>
+      <p class="small muted" style="margin-top:12px">Calculs : CA = somme des valeurs HT des contacts « Gagné » (1er paiement). Taux de conversion = clients gagnés / total des contacts. Taux de closing = gagnés / (gagnés + perdus).</p>
+    </div>
+
+    <!-- Contacts -->
+    <div id="tab-contacts" style="display:none">
+      <div class="toolbar">
+        <input id="q" type="search" placeholder="Rechercher un nom, un e-mail, une ville…">
+        <select id="fStage"><option value="">Toutes les étapes</option></select>
+        <select id="fSource"><option value="">Toutes les sources</option></select>
+      </div>
+      <div class="small muted" id="count" style="margin-bottom:8px"></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Nom</th><th>Ville</th><th>Source</th><th>Formule</th><th>Étape</th><th>Prochaine action</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table></div>
+      <p class="small muted" style="margin-top:8px">Clique sur une ligne pour ouvrir la fiche contact.</p>
+    </div>
+
+    <!-- Pipeline -->
+    <div id="tab-pipeline" style="display:none">
+      <p class="small muted">Fais avancer un contact avec les flèches ← →, ou ouvre sa fiche en cliquant sur son nom.</p>
+      <div class="kanban" id="kanban"></div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-bg" id="modalBg"><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
+
+<script>
+(function(){
+var STAGES=[
+  {id:'nouveau',label:'Nouveau',cls:''},
+  {id:'contacte',label:'Contacté',cls:''},
+  {id:'proposition',label:'Proposition envoyée',cls:'coral'},
+  {id:'gagne',label:'Gagné',cls:'ok'},
+  {id:'perdu',label:'Perdu',cls:'ko'}
+];
+var SOURCES=['Instagram','TikTok','LinkedIn','Partenaire (salle de sport)','Salon / événement','Bouche-à-oreille','Recherche Google','Site web'];
+var FORMULES={mensuel:{nom:'Mensuel',ht:32.5},trimestre:{nom:'Trimestre',ht:87.5},duo:{nom:'Duo',ht:57.5}};
+var stageLabel=function(id){return STAGES.filter(function(s){return s.id===id})[0].label};
+var stageCls=function(id){return STAGES.filter(function(s){return s.id===id})[0].cls};
+
+function h(d,t,n){return {date:d,type:t,note:n}}
+function seed(){
+  var c=[
+  ['Léa','Moreau','Paris 11e','Instagram','trimestre','gagne',[h('2026-10-02','Message Instagram','A réagi au post « Teste l\'escalade »'),h('2026-10-04','E-mail','Envoi du programme et des formules'),h('2026-10-06','Commande','Formule Trimestre payée (démo)')],'Envoyer le kit escalade','2026-11-25'],
+  ['Hugo','Bernard','Boulogne-Billancourt','LinkedIn','duo','gagne',[h('2026-10-08','LinkedIn','Commentaire sur le post fondateur'),h('2026-10-10','Appel','Veut tester avec sa compagne'),h('2026-10-12','Commande','Formule Duo payée (démo)')],'Confirmer le créneau du samedi','2026-11-28'],
+  ['Inès','Dubois','Montreuil','TikTok','mensuel','gagne',[h('2026-10-15','Message TikTok','Question sur le niveau requis'),h('2026-10-15','DM','Réponse : séance 100 % débutants'),h('2026-10-16','Commande','Formule Mensuelle payée (démo)')],'Appel de bienvenue','2026-11-20'],
+  ['Thomas','Laurent','Paris 15e','Partenaire (salle de sport)','mensuel','gagne',[h('2026-10-18','Salon','Rencontré à l\'accueil de la salle de bloc partenaire'),h('2026-10-20','Commande','Formule Mensuelle payée (démo)')],'Demander un avis après séance','2026-12-08'],
+  ['Camille','Petit','Vincennes','Bouche-à-oreille','trimestre','gagne',[h('2026-10-21','E-mail','Recommandée par Léa Moreau'),h('2026-10-23','Commande','Carte cadeau Trimestre (démo)')],'Envoyer la carte cadeau imprimable','2026-11-18'],
+  ['Yanis','Garcia','Saint-Denis','Instagram','mensuel','gagne',[h('2026-10-25','DM Instagram','Intéressé par la boxe en janvier'),h('2026-10-27','Commande','Formule Mensuelle payée (démo)')],'Ajouter au groupe communauté','2026-11-19'],
+  ['Manon','Roux','Paris 18e','Salon / événement','trimestre','gagne',[h('2026-10-11','Salon','Stand Déclic au salon Sport Paris Découverte (fictif)'),h('2026-10-14','E-mail','Relance avec code -10 %'),h('2026-10-17','Commande','Formule Trimestre payée (démo)')],'Envoyer le kit escalade','2026-11-25'],
+  ['Lucas','Fournier','Issy-les-Moulineaux','LinkedIn','duo','proposition',[h('2026-10-29','LinkedIn','A liké 3 posts'),h('2026-11-02','Appel','Hésite entre Duo et 2 Mensuels'),h('2026-11-03','E-mail','Proposition Duo envoyée')],'Relancer par téléphone','2026-11-16'],
+  ['Chloé','Girard','Paris 20e','TikTok','mensuel','proposition',[h('2026-11-01','DM TikTok','Demande les dates de décembre'),h('2026-11-04','E-mail','Proposition + planning envoyés')],'Relance e-mail J+7','2026-11-14'],
+  ['Nathan','Bonnet','Créteil','Partenaire (salle de sport)','trimestre','proposition',[h('2026-11-03','Salon','Flyer récupéré à la salle partenaire'),h('2026-11-05','Appel','Veut offrir à son frère'),h('2026-11-06','E-mail','Proposition carte cadeau Trimestre')],'Rappeler avant le 20/11','2026-11-17'],
+  ['Sarah','Lambert','Paris 13e','Instagram','mensuel','proposition',[h('2026-11-05','DM Instagram','Question sur la résiliation'),h('2026-11-06','DM','Envoi du lien de commande')],'Relance DM','2026-11-15'],
+  ['Maxime','Fontaine','Neuilly-sur-Seine','Site web','trimestre','contacte',[h('2026-11-07','Formulaire','Demande d\'informations via le site'),h('2026-11-08','E-mail','Réponse avec la FAQ et le programme')],'Envoyer proposition Trimestre','2026-11-14'],
+  ['Emma','Chevalier','Paris 9e','LinkedIn','mensuel','contacte',[h('2026-11-08','LinkedIn','Message après post « 61 % des Français »'),h('2026-11-09','LinkedIn','Réponse, demande de son secteur')],'Proposer un appel de 10 min','2026-11-15'],
+  ['Rayan','Mercier','Aubervilliers','TikTok','mensuel','contacte',[h('2026-11-09','Commentaire TikTok','« C\'est où la boxe ? »'),h('2026-11-10','DM','Réponse : salle partenaire à Saint-Denis')],'Envoyer lien de commande','2026-11-14'],
+  ['Julie','Blanc','Levallois-Perret','Salon / événement','duo','contacte',[h('2026-11-10','Salon','Rencontrée à l\'atelier découverte (fictif)'),h('2026-11-11','E-mail','Envoi du programme')],'Appel de qualification','2026-11-17'],
+  ['Antoine','Guerin','Paris 12e','Bouche-à-oreille','mensuel','nouveau',[h('2026-11-11','Formulaire','Parrainé par Hugo Bernard')],'Premier appel','2026-11-14'],
+  ['Zoé','Muller','Ivry-sur-Seine','Instagram','trimestre','nouveau',[h('2026-11-12','DM Instagram','A partagé la story du calendrier')],'Répondre au DM','2026-11-13'],
+  ['Adam','Henry','Pantin','TikTok','mensuel','nouveau',[h('2026-11-12','Commentaire TikTok','Tag un ami sous la vidéo padel')],'Répondre en DM','2026-11-14'],
+  ['Clara','Rousseau','Paris 17e','Site web','duo','nouveau',[h('2026-11-12','Formulaire','Question sur la formule Duo')],'Répondre à l\'e-mail','2026-11-13'],
+  ['Louis','Vincent','Rueil-Malmaison','LinkedIn','mensuel','perdu',[h('2026-10-05','LinkedIn','Intéressé'),h('2026-10-08','E-mail','Proposition envoyée'),h('2026-10-15','Appel','Trop loin des salles partenaires (78)')],'Recontacter à l\'ouverture des Yvelines','2027-03-01'],
+  ['Jade','Faure','Paris 10e','Instagram','mensuel','perdu',[h('2026-10-09','DM Instagram','Intéressée'),h('2026-10-12','DM','Proposition envoyée'),h('2026-10-20','DM','A choisi un abonnement de salle classique')],'Aucune (archivé)','-'],
+  ['Mehdi','Andre','Nanterre','Partenaire (salle de sport)','trimestre','perdu',[h('2026-10-14','Salon','Flyer salle partenaire'),h('2026-10-16','Appel','Budget serré ce trimestre')],'Relance offre de janvier','2027-01-05']
+  ];
+  return c.map(function(x,i){
+    return {id:'C'+(i+1),prenom:x[0],nom:x[1],ville:x[2],source:x[3],formule:x[4],etape:x[5],
+      email:(x[0]+'.'+x[1]).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')+'@exemple.fr',
+      tel:'06 00 00 '+String(10+i).padStart(2,'0')+' '+String(20+i).padStart(2,'0'),
+      historique:x[6],action:x[7],echeance:x[8]};
+  });
+}
+function load(){var d=localStorage.getItem(DECLIC.KEY);return d?JSON.parse(d):seed();}
+function save(){localStorage.setItem(DECLIC.KEY,JSON.stringify(DB));}
+var DB=load();
+
+// Bonus : import des commandes et messages venant de l'espace de vente
+(function importOrders(){
+  var list=JSON.parse(localStorage.getItem(DECLIC.ORDERS)||'[]'); if(!list.length) return;
+  var n=0;
+  list.forEach(function(o){
+    var today=o.date.slice(0,10);
+    if(o.type==='commande'){
+      DB.push({id:o.id,prenom:o.prenom,nom:o.nom,ville:o.secteur,source:o.source,formule:o.formule,etape:'gagne',email:o.email,tel:o.tel||'-',isNew:true,
+        historique:[h(today,'Commande site',o.formuleNom+' payée (simulation), '+DECLIC.euro(o.ttc)+' TTC · créneau : '+o.creneau)],
+        action:'Appel de bienvenue + envoi du kit',echeance:today});
+    } else {
+      DB.push({id:'W'+Date.parse(o.date),prenom:o.prenom,nom:o.nom,ville:'-',source:'Site web',formule:'mensuel',etape:'nouveau',email:o.email,tel:'-',isNew:true,
+        historique:[h(today,'Formulaire de contact',o.message)],action:'Répondre au message',echeance:today});
+    }
+    n++;
+  });
+  localStorage.removeItem(DECLIC.ORDERS); save();
+  var m=document.getElementById('importMsg'); m.style.display='block';
+  m.innerHTML='✅ '+n+' nouvel'+(n>1?'les entrées':'le entrée')+' reçue'+(n>1?'s':'')+' depuis l\'espace de vente (marquée'+(n>1?'s':'')+' <span class="new-flag">NOUVEAU</span>).';
+})();
+
+function valeur(c){return FORMULES[c.formule]?FORMULES[c.formule].ht:0}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]})}
+function fdate(d){return d&&d!=='-'?new Date(d).toLocaleDateString('fr-FR'):'-'}
+
+// Tabs
+document.querySelectorAll('.crm-tabs button').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.crm-tabs button').forEach(function(x){x.classList.toggle('on',x===b)});
+  ['dash','contacts','pipeline'].forEach(function(t){document.getElementById('tab-'+t).style.display=(t===b.dataset.tab)?'':'none'});
+})});
+
+// Filters
+STAGES.forEach(function(s){fStage.insertAdjacentHTML('beforeend','<option value="'+s.id+'">'+s.label+'</option>')});
+SOURCES.forEach(function(s){fSource.insertAdjacentHTML('beforeend','<option>'+s+'</option>')});
+[q,fStage,fSource].forEach(function(el){el.addEventListener('input',renderTable)});
+
+function renderDash(){
+  var won=DB.filter(function(c){return c.etape==='gagne'}), lost=DB.filter(function(c){return c.etape==='perdu'}), prop=DB.filter(function(c){return c.etape==='proposition'});
+  var ca=won.reduce(function(a,c){return a+valeur(c)},0);
+  kCA.textContent=DECLIC.euro(ca)+' HT'; kCATTC.textContent='soit '+DECLIC.euro(ca*1.2)+' TTC';
+  kClients.textContent=won.length;
+  kConv.textContent=(DB.length?Math.round(won.length/DB.length*100):0)+' %';
+  kConvDet.textContent=won.length+' gagnés / '+DB.length+' contacts · closing '+((won.length+lost.length)?Math.round(won.length/(won.length+lost.length)*100):0)+' %';
+  var pv=prop.reduce(function(a,c){return a+valeur(c)},0);
+  kPipe.textContent=DECLIC.euro(pv)+' HT'; kPipeDet.textContent=prop.length+' propositions en attente';
+  var max=Math.max.apply(null,STAGES.map(function(s){return DB.filter(function(c){return c.etape===s.id}).length}))||1;
+  byStage.innerHTML=STAGES.map(function(s){var n=DB.filter(function(c){return c.etape===s.id}).length;
+    return '<div style="margin:8px 0"><div style="display:flex;justify-content:space-between" class="small"><span>'+s.label+'</span><strong>'+n+'</strong></div><div class="bar"><span style="width:'+(n/max*100)+'%"></span></div></div>'}).join('');
+  var bys={}; won.forEach(function(c){bys[c.source]=(bys[c.source]||0)+1});
+  var m2=Math.max.apply(null,Object.values(bys).concat([1]));
+  bySource.innerHTML=SOURCES.map(function(s){var n=bys[s]||0;
+    return '<div style="margin:8px 0"><div style="display:flex;justify-content:space-between" class="small"><span>'+s+'</span><strong>'+n+'</strong></div><div class="bar"><span style="width:'+(n/m2*100)+'%;background:var(--navy)"></span></div></div>'}).join('');
+  var upcoming=DB.filter(function(c){return c.etape!=='perdu'&&c.echeance&&c.echeance!=='-'}).sort(function(a,b){return a.echeance.localeCompare(b.echeance)}).slice(0,6);
+  nextActions.innerHTML=upcoming.map(function(c){return '<tr class="clickrow" data-id="'+c.id+'"><td>'+esc(c.prenom+' '+c.nom)+'</td><td><span class="pill '+stageCls(c.etape)+'">'+stageLabel(c.etape)+'</span></td><td>'+esc(c.action)+'</td><td>'+fdate(c.echeance)+'</td></tr>'}).join('');
+}
+function renderTable(){
+  var t=q.value.toLowerCase();
+  var list=DB.filter(function(c){
+    return (!fStage.value||c.etape===fStage.value)&&(!fSource.value||c.source===fSource.value)&&
+      (!t||(c.prenom+' '+c.nom+' '+c.email+' '+c.ville).toLowerCase().indexOf(t)>-1);
+  });
+  count.textContent=list.length+' contact'+(list.length>1?'s':'')+' affiché'+(list.length>1?'s':'')+' sur '+DB.length;
+  rows.innerHTML=list.map(function(c){return '<tr class="clickrow" data-id="'+c.id+'"><td><strong>'+esc(c.prenom+' '+c.nom)+'</strong> '+(c.isNew?'<span class="new-flag">NOUVEAU</span>':'')+'<div class="small muted">'+esc(c.email)+'</div></td><td>'+esc(c.ville)+'</td><td>'+esc(c.source)+'</td><td>'+(FORMULES[c.formule]||{}).nom+'</td><td><span class="pill '+stageCls(c.etape)+'">'+stageLabel(c.etape)+'</span></td><td class="small">'+esc(c.action)+'</td></tr>'}).join('')||'<tr><td colspan="6">Aucun contact ne correspond.</td></tr>';
+}
+function renderKanban(){
+  kanban.innerHTML=STAGES.map(function(s,i){
+    var cs=DB.filter(function(c){return c.etape===s.id});
+    return '<div class="col"><h4><span>'+s.label+'</span><span class="pill">'+cs.length+'</span></h4>'+cs.map(function(c){
+      return '<div class="kcard"><b data-id="'+c.id+'">'+esc(c.prenom+' '+c.nom)+'</b> '+(c.isNew?'<span class="new-flag">NOUVEAU</span>':'')+'<div class="small muted">'+esc(c.source)+' · '+(FORMULES[c.formule]||{}).nom+' · '+DECLIC.euro(valeur(c))+' HT</div>'+
+      '<div class="acts"><button data-mv="'+c.id+'" data-d="-1" '+(i===0?'disabled':'')+' aria-label="Reculer">←</button><button data-mv="'+c.id+'" data-d="1" '+(i===STAGES.length-1?'disabled':'')+' aria-label="Avancer">→</button></div></div>'
+    }).join('')+'</div>';
+  }).join('');
+}
+function renderAll(){renderDash();renderTable();renderKanban();}
+
+function move(id,d){
+  var c=DB.filter(function(x){return x.id===id})[0]; var i=STAGES.findIndex(function(s){return s.id===c.etape});
+  var ni=Math.min(Math.max(i+d,0),STAGES.length-1); if(ni===i) return;
+  c.etape=STAGES[ni].id; c.historique.push(h(new Date().toISOString().slice(0,10),'Changement d\'étape','Passé à « '+STAGES[ni].label+' »'));
+  save(); renderAll();
+}
+
+function openFiche(id){
+  var c=DB.filter(function(x){return x.id===id})[0]; if(!c) return;
+  modal.innerHTML='<button class="close" aria-label="Fermer">✕</button>'+
+  '<div class="eyebrow">Fiche contact · '+c.id+'</div><h2 style="margin-bottom:6px">'+esc(c.prenom+' '+c.nom)+'</h2>'+
+  '<span class="pill '+stageCls(c.etape)+'">'+stageLabel(c.etape)+'</span> <span class="pill">'+esc(c.source)+'</span> <span class="small muted">(données fictives)</span>'+
+  '<dl class="facts" style="margin-top:14px"><dt>E-mail</dt><dd>'+esc(c.email)+'</dd><dt>Téléphone</dt><dd>'+esc(c.tel)+'</dd><dt>Ville</dt><dd>'+esc(c.ville)+'</dd><dt>Source</dt><dd>'+esc(c.source)+'</dd><dt>Formule</dt><dd>'+(FORMULES[c.formule]||{}).nom+' · '+DECLIC.euro(valeur(c))+' HT</dd></dl>'+
+  '<label for="mStage">Étape du pipeline</label><select id="mStage">'+STAGES.map(function(s){return '<option value="'+s.id+'" '+(s.id===c.etape?'selected':'')+'>'+s.label+'</option>'}).join('')+'</select>'+
+  '<div class="form-row"><div><label for="mAction">Prochaine action</label><input id="mAction" value="'+esc(c.action)+'"></div><div><label for="mDate">Échéance</label><input id="mDate" type="date" value="'+(c.echeance&&c.echeance!=='-'?c.echeance:'')+'"></div></div>'+
+  '<h3 style="margin-top:18px">Historique des échanges</h3><ul class="timeline">'+c.historique.slice().reverse().map(function(e){return '<li><span>'+fdate(e.date)+' · '+esc(e.type)+'</span>'+esc(e.note)+'</li>'}).join('')+'</ul>'+
+  '<label for="mNote">Ajouter un échange</label><div class="form-row"><select id="mType"><option>Appel</option><option>E-mail</option><option>DM Instagram</option><option>DM TikTok</option><option>LinkedIn</option><option>Rendez-vous</option></select><input id="mNote" placeholder="Résumé de l\'échange"></div>'+
+  '<div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap"><button class="btn" id="mSave">Enregistrer</button><button class="btn ghost" id="mCancel">Fermer</button></div>';
+  modalBg.classList.add('open');
+  modal.querySelector('.close').onclick=closeM; mCancel.onclick=closeM;
+  mSave.onclick=function(){
+    var today=new Date().toISOString().slice(0,10);
+    if(mStage.value!==c.etape){c.historique.push(h(today,'Changement d\'étape','Passé à « '+stageLabel(mStage.value)+' »'));c.etape=mStage.value;}
+    if(mNote.value.trim()) c.historique.push(h(today,mType.value,mNote.value.trim()));
+    c.action=mAction.value.trim()||'-'; c.echeance=mDate.value||'-'; c.isNew=false;
+    save(); renderAll(); closeM();
+  };
+}
+function closeM(){modalBg.classList.remove('open')}
+modalBg.addEventListener('click',function(e){if(e.target===modalBg) closeM()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape') closeM()});
+
+document.addEventListener('click',function(e){
+  var mv=e.target.closest('[data-mv]'); if(mv){move(mv.dataset.mv,+mv.dataset.d);return;}
+  var r=e.target.closest('.clickrow,[data-id]'); if(r&&r.dataset.id&&!e.target.closest('.modal')) openFiche(r.dataset.id);
+});
+
+addBtn.onclick=function(){
+  modal.innerHTML='<button class="close" aria-label="Fermer">✕</button><h2>Nouveau contact</h2><p class="notice small">Démo : données fictives uniquement.</p>'+
+  '<div class="form-row"><div><label for="nP">Prénom</label><input id="nP"></div><div><label for="nN">Nom</label><input id="nN"></div></div>'+
+  '<div class="form-row"><div><label for="nE">E-mail</label><input id="nE" placeholder="prenom.nom@exemple.fr"></div><div><label for="nV">Ville</label><input id="nV"></div></div>'+
+  '<div class="form-row"><div><label for="nS">Source</label><select id="nS">'+SOURCES.map(function(s){return '<option>'+s+'</option>'}).join('')+'</select></div><div><label for="nF">Formule visée</label><select id="nF"><option value="mensuel">Mensuel</option><option value="trimestre">Trimestre</option><option value="duo">Duo</option></select></div></div>'+
+  '<button class="btn" id="nSave" style="margin-top:16px">Ajouter</button>';
+  modalBg.classList.add('open'); modal.querySelector('.close').onclick=closeM;
+  nSave.onclick=function(){
+    if(!nP.value.trim()||!nN.value.trim()){alert('Prénom et nom requis');return;}
+    var today=new Date().toISOString().slice(0,10);
+    DB.push({id:'M'+Date.now().toString().slice(-5),prenom:nP.value.trim(),nom:nN.value.trim(),email:nE.value.trim()||'-',tel:'-',ville:nV.value.trim()||'-',source:nS.value,formule:nF.value,etape:'nouveau',
+      historique:[h(today,'Création','Contact ajouté manuellement')],action:'Premier contact',echeance:today});
+    save(); renderAll(); closeM();
+  };
+};
+resetBtn.onclick=function(){if(confirm('Recharger les 22 contacts de démo ? Les modifications seront perdues.')){DB=seed();save();renderAll();}};
+
+renderAll();
+})();
+</script>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div><strong style="color:#fff">Déclic</strong> · La box sport découverte · Paris & petite couronne<br>
+    Projet étudiant INSEEC (Master 2 Management du Sport & Innovations), démo sans vente réelle : aucun paiement, aucune donnée réelle.</div>
+    <div><a href="index.html">Vente</a> · <a href="crm.html">CRM</a> · <a href="strategie.html">Stratégie</a> · <a href="communication.html">Communication</a></div>
+  </div>
+</footer>
+</body>
+</html>
