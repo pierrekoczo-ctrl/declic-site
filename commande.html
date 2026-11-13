@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Commander · Déclic</title>
 <meta name="description" content="Déclic : chaque mois, un nouveau sport à tester à Paris avec une séance d'initiation encadrée, un kit et un guide. Projet étudiant INSEEC en mode démo.">
+<meta name="theme-color" content="#15130F">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script src="assets/app.js"></script>
 </head>
@@ -16,67 +17,81 @@
 <div class="demo-banner" role="note">Projet étudiant INSEEC, démo sans vente réelle</div>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Logo Déclic">Déclic</a>
-    <button class="menu-btn" aria-label="Ouvrir le menu">Menu</button>
-    <nav class="nav"><a href="index.html" class="active">Vente<span class="tag">Offre & achat</span></a><a href="crm.html" class="">CRM<span class="tag">Suivi clients</span></a><a href="strategie.html" class="">Stratégie<span class="tag">Pourquoi Déclic</span></a><a href="communication.html" class="">Communication<span class="tag">Comment vendre</span></a></nav>
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">déclic</a>
+    <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
+    <nav class="nav"><a href="index.html" class="active">Vente</a><a href="crm.html">CRM</a><a href="strategie.html">Stratégie</a><a href="communication.html">Communication</a><a href="commande.html" class="nav-cta">Commander</a></nav>
   </div>
 </header>
 <main>
-<section class="page-head" style="padding:36px 0">
+<section class="page-head photo" style="padding:56px 0 48px;background-image:url(assets/img/escalade.jpg)">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--lime)">Commande</div>
-    <h1 style="font-size:clamp(1.7rem,4vw,2.4rem)">Ta box Déclic en 2 minutes</h1>
+    <div class="eyebrow">Commande</div>
+    <h1 style="font-size:clamp(2rem,4.5vw,3.2rem);margin:0">Ta box Déclic en 2 minutes</h1>
+    <p class="lead" style="margin:12px 0 0">Première séance en décembre : escalade de bloc, en petit groupe de débutants.</p>
   </div>
 </section>
-<section>
+<section style="padding-top:40px">
   <div class="wrap checkout">
     <form id="orderForm">
       <div class="steps"><span class="on">1. Formule</span><span class="on">2. Tes infos</span><span class="on">3. Paiement simulé</span><span>4. Confirmation</span></div>
 
-      <h3>1. Choisis ta formule</h3>
-      <label class="plan-option"><input type="radio" name="formule" value="mensuel"><div><strong>Déclic Mensuel · 39 € TTC/mois</strong><div class="small muted">32,50 € HT · sans engagement, résiliable en 1 clic</div></div></label>
-      <label class="plan-option"><input type="radio" name="formule" value="trimestre"><div><strong>Déclic Trimestre · 105 € TTC</strong><div class="small muted">87,50 € HT · 3 mois, soit 35 € TTC/mois, paiement unique</div></div></label>
-      <label class="plan-option"><input type="radio" name="formule" value="duo"><div><strong>Déclic Duo · 69 € TTC/mois</strong><div class="small muted">57,50 € HT · 2 personnes, sans engagement</div></div></label>
+      <div class="form-block">
+        <h3><span class="n">1</span>Choisis ta formule</h3>
+        <label class="plan-option"><input type="radio" name="formule" value="mensuel"><div><strong>Déclic Mensuel · 39 € TTC/mois</strong><div class="small muted">32,50 € HT · sans engagement, résiliable en 1 clic</div></div></label>
+        <label class="plan-option"><input type="radio" name="formule" value="trimestre"><div><strong>Déclic Trimestre · 105 € TTC</strong> <span class="pill coral">Le plus choisi</span><div class="small muted">87,50 € HT · 3 mois, soit 35 € TTC/mois, paiement unique</div></div></label>
+        <label class="plan-option" style="margin-bottom:0"><input type="radio" name="formule" value="duo"><div><strong>Déclic Duo · 69 € TTC/mois</strong><div class="small muted">57,50 € HT · 2 personnes, sans engagement</div></div></label>
+      </div>
 
-      <h3 style="margin-top:28px">2. Tes informations</h3>
-      <p class="notice small">Mode démo : merci de saisir des informations <strong>fictives</strong>. Rien n'est envoyé à un serveur, tout reste dans ton navigateur.</p>
-      <div class="form-row">
-        <div><label for="prenom">Prénom</label><input id="prenom" required placeholder="Ex. Léa"></div>
-        <div><label for="nom">Nom</label><input id="nom" required placeholder="Ex. Martin"></div>
+      <div class="form-block">
+        <h3><span class="n">2</span>Tes informations</h3>
+        <p class="notice small">Mode démo : merci de saisir des informations <strong>fictives</strong>. Rien n'est envoyé à un serveur, tout reste dans ton navigateur.</p>
+        <div class="form-row">
+          <div><label for="prenom">Prénom</label><input id="prenom" required placeholder="Ex. Léa" autocomplete="off"></div>
+          <div><label for="nom">Nom</label><input id="nom" required placeholder="Ex. Martin" autocomplete="off"></div>
+        </div>
+        <div class="form-row">
+          <div><label for="email">E-mail</label><input id="email" type="email" required placeholder="lea.martin@exemple.fr" autocomplete="off"></div>
+          <div><label for="tel">Téléphone</label><input id="tel" placeholder="06 00 00 00 00" autocomplete="off"></div>
+        </div>
+        <div class="form-row">
+          <div><label for="secteur">Secteur des séances</label>
+            <select id="secteur" required>
+              <option value="">Choisir…</option>
+              <option>Paris (75)</option><option>Hauts-de-Seine (92)</option><option>Seine-Saint-Denis (93)</option><option>Val-de-Marne (94)</option>
+            </select></div>
+          <div><label for="creneau">Créneau préféré</label>
+            <select id="creneau"><option>Soir en semaine</option><option>Samedi</option><option>Dimanche</option></select></div>
+        </div>
+        <label for="source">Comment as-tu connu Déclic ?</label>
+        <select id="source"><option>Instagram</option><option>TikTok</option><option>LinkedIn</option><option>Partenaire (salle de sport)</option><option>Bouche-à-oreille</option><option>Recherche Google</option></select>
       </div>
-      <div class="form-row">
-        <div><label for="email">E-mail</label><input id="email" type="email" required placeholder="lea.martin@exemple.fr"></div>
-        <div><label for="tel">Téléphone</label><input id="tel" placeholder="06 00 00 00 00"></div>
-      </div>
-      <div class="form-row">
-        <div><label for="secteur">Secteur des séances</label>
-          <select id="secteur" required>
-            <option value="">Choisir…</option>
-            <option>Paris (75)</option><option>Hauts-de-Seine (92)</option><option>Seine-Saint-Denis (93)</option><option>Val-de-Marne (94)</option>
-          </select></div>
-        <div><label for="creneau">Créneau préféré</label>
-          <select id="creneau"><option>Soir en semaine</option><option>Samedi</option><option>Dimanche</option></select></div>
-      </div>
-      <label for="source">Comment as-tu connu Déclic ?</label>
-      <select id="source"><option>Instagram</option><option>TikTok</option><option>LinkedIn</option><option>Partenaire (salle de sport)</option><option>Bouche-à-oreille</option><option>Recherche Google</option></select>
 
-      <h3 style="margin-top:28px">3. Paiement simulé</h3>
-      <div class="card" style="box-shadow:none">
-        <label class="plan-option selected" style="margin:0"><input type="radio" checked disabled><div><strong>💳 Carte bancaire (simulation)</strong><div class="small muted">Aucune donnée bancaire n'est demandée ni enregistrée. Le clic sur « Payer » simule un paiement accepté.</div></div></label>
-        <label style="display:flex;gap:10px;align-items:flex-start;font-weight:500;margin-top:14px"><input type="checkbox" id="cgv" required style="width:auto;margin-top:5px"> J'accepte les conditions de vente de la démo et je comprends qu'aucun achat réel n'est effectué.</label>
+      <div class="form-block">
+        <h3><span class="n">3</span>Paiement simulé</h3>
+        <div class="pay-sim">
+          <span class="ic-badge dark"><svg class="ic"><use href="assets/icons.svg#card"/></svg></span>
+          <div><strong>Carte bancaire (simulation)</strong><div class="small muted">Aucune donnée bancaire n'est demandée ni enregistrée. Le clic sur « Payer » simule un paiement accepté.</div></div>
+        </div>
+        <label class="check-line"><input type="checkbox" id="cgv" required> J'accepte les conditions de vente de la démo et je comprends qu'aucun achat réel n'est effectué.</label>
+        <button class="btn" type="submit" id="payBtn" style="margin-top:20px;width:100%">Payer (simulation)</button>
       </div>
-      <button class="btn" type="submit" id="payBtn" style="margin-top:18px;width:100%">Payer (simulation)</button>
     </form>
 
     <aside class="card summary-box">
-      <h3>Récapitulatif</h3>
-      <div id="sumName" style="font-weight:700">Choisis une formule</div>
-      <div class="small muted" id="sumDesc"></div>
-      <hr style="border:0;border-top:1px solid var(--line);margin:14px 0">
-      <div style="display:flex;justify-content:space-between"><span>Total HT</span><span id="sumHT">-</span></div>
-      <div style="display:flex;justify-content:space-between"><span>TVA 20 %</span><span id="sumTVA">-</span></div>
-      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.2rem;margin-top:6px;color:var(--navy)"><span>Total TTC</span><span id="sumTTC">-</span></div>
-      <p class="small muted" style="margin-top:12px">Livraison du kit incluse. Première séance : décembre 2026 (escalade de bloc).</p>
+      <div class="sb-photo"><img src="assets/img/escalade.jpg" alt="Une grimpeuse sur un mur d'escalade de bloc"><span>1er sport : escalade de bloc</span></div>
+      <div class="sb-body">
+        <div class="eyebrow" style="margin-bottom:.5em">Récapitulatif</div>
+        <div id="sumName" style="font-weight:700;font-family:var(--f-title);font-size:1.3rem">Choisis une formule</div>
+        <div class="small muted" id="sumDesc" style="margin-bottom:14px"></div>
+        <div class="line"><span>Total HT</span><span id="sumHT">-</span></div>
+        <div class="line"><span>TVA 20 %</span><span id="sumTVA">-</span></div>
+        <div class="total"><span>Total TTC</span><span id="sumTTC">-</span></div>
+        <ul class="list small" style="margin:18px 0 0">
+          <li>Livraison du kit incluse</li>
+          <li>Première séance : décembre 2026</li>
+          <li>Sans engagement (Mensuel, Duo)</li>
+        </ul>
+      </div>
     </aside>
   </div>
 </section>
@@ -121,10 +136,13 @@
 
 </main>
 <footer class="site-footer">
-  <div class="wrap">
-    <div><strong style="color:#fff">Déclic</strong> · La box sport découverte · Paris & petite couronne<br>
-    Projet étudiant INSEEC (Master 2 Management du Sport & Innovations), démo sans vente réelle : aucun paiement, aucune donnée réelle.</div>
-    <div><a href="index.html">Vente</a> · <a href="crm.html">CRM</a> · <a href="strategie.html">Stratégie</a> · <a href="communication.html">Communication</a></div>
+  <div class="wrap foot">
+    <div class="foot-grid">
+      <div><div class="foot-brand"><img src="assets/logo.svg" alt="">déclic</div><p>La box sport découverte de Paris et de la petite couronne. Chaque mois, un nouveau sport à tester, sans engagement.</p></div>
+      <div class="foot-col"><h4>Le site</h4><a href="index.html">Vente</a><a href="crm.html">CRM</a><a href="strategie.html">Stratégie</a><a href="communication.html">Communication</a></div>
+      <div class="foot-col"><h4>Infos</h4><a href="index.html#offres">Formules</a><a href="index.html#faq">FAQ</a><a href="index.html#contact">Contact</a><a href="communication.html#credits">Crédits photos</a></div>
+    </div>
+    <div class="foot-bottom"><span>Projet étudiant INSEEC (Master 2 Management du Sport &amp; Innovations), démo sans vente réelle : aucun paiement, aucune donnée réelle.</span><span>Photos : Unsplash</span></div>
   </div>
 </footer>
 </body>

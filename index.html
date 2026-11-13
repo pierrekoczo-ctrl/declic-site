@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Déclic · La box qui te fait tester un nouveau sport chaque mois</title>
 <meta name="description" content="Déclic : chaque mois, un nouveau sport à tester à Paris avec une séance d'initiation encadrée, un kit et un guide. Projet étudiant INSEEC en mode démo.">
+<meta name="theme-color" content="#15130F">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script src="assets/app.js"></script>
 </head>
@@ -16,79 +17,146 @@
 <div class="demo-banner" role="note">Projet étudiant INSEEC, démo sans vente réelle</div>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Logo Déclic">Déclic</a>
-    <button class="menu-btn" aria-label="Ouvrir le menu">Menu</button>
-    <nav class="nav"><a href="index.html" class="active">Vente<span class="tag">Offre & achat</span></a><a href="crm.html" class="">CRM<span class="tag">Suivi clients</span></a><a href="strategie.html" class="">Stratégie<span class="tag">Pourquoi Déclic</span></a><a href="communication.html" class="">Communication<span class="tag">Comment vendre</span></a></nav>
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">déclic</a>
+    <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
+    <nav class="nav"><a href="index.html" class="active">Vente</a><a href="crm.html">CRM</a><a href="strategie.html">Stratégie</a><a href="communication.html">Communication</a><a href="commande.html" class="nav-cta">Commander</a></nav>
   </div>
 </header>
 <main>
+
+<!-- Hero -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow" style="color:var(--lime)">La box sport découverte · Paris</div>
-      <h1>Chaque mois, <em>un nouveau sport</em>. Zéro engagement, zéro galère.</h1>
+      <div class="eyebrow">Box sport découverte · Paris &amp; petite couronne</div>
+      <h1>Chaque mois, <em>un nouveau sport</em>. Sans engagement, sans galère.</h1>
       <p class="promise"><strong>Pour les 25-35 ans d'Île-de-France qui veulent se (re)mettre au sport sans savoir lequel choisir</strong> : Déclic organise chaque mois une séance d'initiation encadrée près de chez toi et t'envoie le kit pour la faire, pour que tu trouves enfin le sport qui te plaît, sans abonnement à l'aveugle.</p>
       <div class="cta-row">
-        <a class="btn" href="commande.html">Je commande ma box · 39 € TTC/mois</a>
-        <a class="btn light" href="#offres">Voir les formules</a>
+        <a class="btn" href="commande.html">Je commande ma box · 39 € TTC/mois <svg class="ic"><use href="assets/icons.svg#arrow"/></svg></a>
+        <a class="textlink" href="#programme">Voir les 12 sports</a>
+      </div>
+      <div class="trust">
+        <div><b>12</b><span>sports sur l'année</span></div>
+        <div><b>8 à 12</b><span>débutants par groupe</span></div>
+        <div><b>1 clic</b><span>pour résilier</span></div>
       </div>
     </div>
-    <div class="hero-card" aria-label="Exemple de programme">
-      <div class="small muted" style="font-weight:700;margin-bottom:6px">Ton programme des 3 prochains mois</div>
-      <div class="month"><div class="dot" style="background:#FFE4DC">🧗</div><div><strong>Décembre · Escalade de bloc</strong><div class="small muted">Séance 1h30 en groupe de 8 · kit : sac à magnésie</div></div></div>
-      <div class="month"><div class="dot" style="background:#E3E8FF">🥊</div><div><strong>Janvier · Boxe anglaise</strong><div class="small muted">Séance 1h30 · kit : bandes de boxe</div></div></div>
-      <div class="month"><div class="dot" style="background:#EDF8C8">🧘</div><div><strong>Février · Yoga vinyasa</strong><div class="small muted">Séance 1h15 · kit : sangle de yoga</div></div></div>
+    <div class="hero-photo">
+      <img src="assets/img/hero.jpg" alt="Trois amies se tapent dans la main en riant après une séance de sport" fetchpriority="high">
+      <div class="hero-sticker"><div><b>39 €</b><small>TTC / mois</small></div></div>
+      <div class="hero-ticket" aria-label="Prochaine séance">
+        <div class="t-top"><span>Prochaine séance</span><span style="color:var(--accent-d)">Décembre</span></div>
+        <strong>Escalade de bloc</strong>
+        <div class="t-meta">
+          <span><svg class="ic"><use href="assets/icons.svg#calendar"/></svg>Samedi 5 décembre · 10h</span>
+          <span><svg class="ic"><use href="assets/icons.svg#pin"/></svg>Salle partenaire · Paris 11e</span>
+        </div>
+        <div class="seats" aria-label="6 places réservées sur 8"><i></i><i></i><i></i><i></i><i></i><i></i><i class="free"></i><i class="free"></i></div>
+        <div class="small muted" style="margin-top:6px">6 places réservées sur 8 (démo)</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Comment ça marche</div>
-    <h2>3 étapes, et tu es sur le terrain</h2>
-    <div class="grid g3" style="margin-top:24px">
-      <div class="card"><div class="step-num">1</div><h3>Tu choisis ta formule</h3><p class="muted">Mensuelle sans engagement, trimestrielle ou en duo avec un·e ami·e. Tu indiques ton secteur (Paris ou petite couronne) et tes créneaux préférés.</p></div>
-      <div class="card"><div class="step-num">2</div><h3>Tu reçois ta box</h3><p class="muted">Avant le 1er du mois : le kit de petit matériel, le guide du sport (règles, vocabulaire, échauffement) et ton créneau réservé dans une salle partenaire.</p></div>
-      <div class="card"><div class="step-num">3</div><h3>Tu testes, tu kiffes (ou pas)</h3><p class="muted">Séance d'initiation encadrée par un coach diplômé, en petit groupe de débutants. Le sport te plaît ? Tu as une réduction pour t'inscrire dans la salle.</p></div>
+<div class="marquee" aria-hidden="true"><div class="marquee-track">
+  <span>Escalade</span><span>Boxe anglaise</span><span>Yoga</span><span>Padel</span><span>Aviron indoor</span><span>Roller</span><span>Stand-up paddle</span><span>Beach-volley</span><span>Tir à l'arc</span><span>Pilates</span><span>Escrime</span><span>Hip-hop</span>
+  <span>Escalade</span><span>Boxe anglaise</span><span>Yoga</span><span>Padel</span><span>Aviron indoor</span><span>Roller</span><span>Stand-up paddle</span><span>Beach-volley</span><span>Tir à l'arc</span><span>Pilates</span><span>Escrime</span><span>Hip-hop</span>
+</div></div>
+
+<!-- Comment ça marche -->
+<section id="comment">
+  <div class="wrap how">
+    <div class="how-photo reveal">
+      <img src="assets/img/coach.jpg" alt="Une coach corrige la position d'un débutant pendant une séance" loading="lazy">
+      <span class="caption">Un coach diplômé, un groupe 100 % débutants</span>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Comment ça marche</div>
+      <h2>3 étapes, et tu es sur le terrain</h2>
+      <p class="lead">On s'occupe du choix du sport, de la salle, du créneau et du matériel. Toi, tu viens.</p>
+      <div class="steps-list">
+        <div class="step"><div class="n">01</div><div><h3>Tu choisis ta formule</h3><p>Mensuelle sans engagement, trimestrielle ou en duo avec un·e ami·e. Tu indiques ton secteur (Paris ou petite couronne) et tes créneaux préférés.</p></div></div>
+        <div class="step"><div class="n">02</div><div><h3>Tu reçois ta box</h3><p>Avant le 1er du mois : le kit de petit matériel, le guide du sport (règles, vocabulaire, échauffement) et ton créneau réservé dans une salle partenaire.</p></div></div>
+        <div class="step"><div class="n">03</div><div><h3>Tu testes, tu kiffes (ou pas)</h3><p>Séance d'initiation encadrée par un coach diplômé, en petit groupe de débutants. Le sport te plaît ? Tu as -15 % pour t'inscrire dans la salle.</p></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="alt">
+<!-- La box -->
+<section class="alt" id="box">
   <div class="wrap">
-    <div class="eyebrow">Le programme 2026-2027</div>
-    <h2>12 mois, 12 sports à découvrir</h2>
-    <p class="lead">Un sport différent chaque mois, choisi pour être accessible aux débutants et praticable en Île-de-France. Tu peux sauter un mois depuis ton espace (formule mensuelle).</p>
-    <div class="table-wrap" style="margin-top:20px">
-      <table>
-        <thead><tr><th>Mois</th><th>Sport</th><th>Séance</th><th>Dans le kit</th></tr></thead>
-        <tbody>
-          <tr><td>Décembre</td><td>🧗 Escalade de bloc</td><td>1h30, groupe de 8</td><td>Sac à magnésie + magnésie</td></tr>
-          <tr><td>Janvier</td><td>🥊 Boxe anglaise</td><td>1h30, groupe de 8</td><td>Bandes de boxe 3,5 m</td></tr>
-          <tr><td>Février</td><td>🧘 Yoga vinyasa</td><td>1h15, groupe de 10</td><td>Sangle de yoga</td></tr>
-          <tr><td>Mars</td><td>🎾 Padel</td><td>1h30, groupe de 8 (2 terrains)</td><td>Tube de 3 balles + surgrip</td></tr>
-          <tr><td>Avril</td><td>🚣 Aviron indoor</td><td>1h, groupe de 8</td><td>Gants d'entraînement</td></tr>
-          <tr><td>Mai</td><td>🛼 Roller</td><td>1h30, groupe de 8 (location incluse)</td><td>Protège-poignets</td></tr>
-          <tr><td>Juin</td><td>🏄 Stand-up paddle</td><td>1h30, groupe de 8 (location incluse)</td><td>Pochette étanche</td></tr>
-          <tr><td>Juillet</td><td>🏐 Beach-volley</td><td>1h30, groupe de 10</td><td>Casquette Déclic</td></tr>
-          <tr><td>Août</td><td>🏹 Tir à l'arc</td><td>1h30, groupe de 8</td><td>Gourde Déclic</td></tr>
-          <tr><td>Septembre</td><td>🤸 Pilates</td><td>1h, groupe de 10</td><td>Mini-bande élastique</td></tr>
-          <tr><td>Octobre</td><td>🤺 Escrime</td><td>1h30, groupe de 8 (équipement prêté)</td><td>Serviette microfibre</td></tr>
-          <tr><td>Novembre</td><td>💃 Danse hip-hop</td><td>1h15, groupe de 12</td><td>Bandeau sport</td></tr>
-        </tbody>
-      </table>
+    <div class="section-head reveal">
+      <div><div class="eyebrow">Dans ta box chaque mois</div><h2>Une séance, un kit, un guide</h2></div>
+      <p class="lead">Tout ce qu'il faut pour oser pousser la porte d'une salle, même quand on n'a jamais pratiqué.</p>
+    </div>
+    <div class="box-grid">
+      <article class="box-tile reveal">
+        <div class="ph"><img src="assets/img/groupe-escalade.jpg" alt="Un petit groupe de débutants devant un mur d'escalade de bloc" loading="lazy"><span class="num">01 · La séance</span></div>
+        <div class="body"><h3>Une initiation encadrée</h3><p>1h à 1h30 avec un coach diplômé, en groupe de 8 à 12 débutants, dans une salle partenaire près de chez toi. Le gros matériel est prêté.</p></div>
+      </article>
+      <article class="box-tile reveal">
+        <div class="ph"><img src="assets/img/kit-magnesie.jpg" alt="Un sac à magnésie d'escalade, le kit du mois de décembre" loading="lazy"><span class="num">02 · Le kit</span></div>
+        <div class="body"><h3>Le petit matériel du mois</h3><p>Envoyé chez toi avant la séance : sac à magnésie en décembre, bandes de boxe en janvier, sangle de yoga en février… Tu le gardes.</p></div>
+      </article>
+      <article class="box-tile reveal">
+        <div class="ph"><div class="guide-mock"><div><small>Guide Déclic n°1</small><strong>L'escalade de bloc, sans stress</strong></div><ul><li>Les règles et le vocabulaire</li><li>L'échauffement en 8 minutes</li><li>Quoi porter, quoi apporter</li><li>Où continuer près de chez toi</li></ul></div><span class="num">03 · Le guide</span></div>
+        <div class="body"><h3>Le guide pour ne pas arriver perdu·e</h3><p>Un livret papier et une vidéo de 5 minutes : tu sais quoi faire avant, pendant et après la séance.</p></div>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="offres">
+<!-- Programme -->
+<section id="programme">
   <div class="wrap">
-    <div class="eyebrow">Les formules</div>
-    <h2>Choisis ta façon de tester</h2>
-    <p class="lead">Prix affichés TTC (TVA 20 % incluse), prix HT indiqués en dessous. Livraison du kit incluse en France métropolitaine.</p>
-    <div class="grid g3" style="margin-top:28px">
-      <div class="card price-card">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">Le programme 2026-2027</div><h2>12 mois, 12 sports à découvrir</h2></div>
+      <p class="lead">Des sports accessibles aux débutants et praticables en Île-de-France. Tu peux sauter un mois depuis ton espace (formule mensuelle).</p>
+    </div>
+    <div class="sports">
+      <article class="sport next reveal"><img src="assets/img/escalade.jpg" alt="Une grimpeuse sur un mur d'escalade de bloc" loading="lazy"><span class="m">Décembre</span><div class="c"><h3>Escalade de bloc</h3><p>1h30, groupe de 8<br><b>Kit :</b> sac à magnésie + magnésie</p></div></article>
+      <article class="sport reveal"><img src="assets/img/boxe.jpg" alt="Un coach tient les pattes d'ours pendant un exercice de boxe" loading="lazy"><span class="m">Janvier</span><div class="c"><h3>Boxe anglaise</h3><p>1h30, groupe de 8<br><b>Kit :</b> bandes de boxe 3,5 m</p></div></article>
+      <article class="sport reveal"><img src="assets/img/yoga.jpg" alt="Un petit groupe s'étire dans un studio de yoga" loading="lazy"><span class="m">Février</span><div class="c"><h3>Yoga vinyasa</h3><p>1h15, groupe de 10<br><b>Kit :</b> sangle de yoga</p></div></article>
+      <article class="sport reveal"><img src="assets/img/padel.jpg" alt="Une raquette de padel sur un terrain" loading="lazy"><span class="m">Mars</span><div class="c"><h3>Padel</h3><p>1h30, groupe de 8 (2 terrains)<br><b>Kit :</b> tube de 3 balles + surgrip</p></div></article>
+      <article class="sport reveal"><img src="assets/img/aviron.jpg" alt="Un homme sur un rameur dans une salle de sport" loading="lazy"><span class="m">Avril</span><div class="c"><h3>Aviron indoor</h3><p>1h, groupe de 8<br><b>Kit :</b> gants d'entraînement</p></div></article>
+      <article class="sport reveal"><img src="assets/img/roller.jpg" alt="Des patins à roulettes colorés sur un parquet" loading="lazy"><span class="m">Mai</span><div class="c"><h3>Roller</h3><p>1h30, groupe de 8 (location incluse)<br><b>Kit :</b> protège-poignets</p></div></article>
+      <article class="sport reveal"><img src="assets/img/paddle.jpg" alt="Un homme fait du stand-up paddle sur une rivière en ville" loading="lazy"><span class="m">Juin</span><div class="c"><h3>Stand-up paddle</h3><p>1h30, groupe de 8 (location incluse)<br><b>Kit :</b> pochette étanche</p></div></article>
+      <article class="sport reveal"><img src="assets/img/beach-volley.jpg" alt="Des amis jouent au beach-volley" loading="lazy"><span class="m">Juillet</span><div class="c"><h3>Beach-volley</h3><p>1h30, groupe de 10<br><b>Kit :</b> casquette Déclic</p></div></article>
+      <article class="sport reveal"><img src="assets/img/tir-arc.jpg" alt="Une femme vise une cible au tir à l'arc" loading="lazy"><span class="m">Août</span><div class="c"><h3>Tir à l'arc</h3><p>1h30, groupe de 8<br><b>Kit :</b> gourde Déclic</p></div></article>
+      <article class="sport reveal"><img src="assets/img/pilates.jpg" alt="Deux femmes sur des machines de pilates dans un studio" loading="lazy"><span class="m">Septembre</span><div class="c"><h3>Pilates</h3><p>1h, groupe de 10<br><b>Kit :</b> mini-bande élastique</p></div></article>
+      <article class="sport reveal"><img src="assets/img/escrime.jpg" alt="Deux escrimeurs en tenue blanche s'affrontent au fleuret" loading="lazy"><span class="m">Octobre</span><div class="c"><h3>Escrime</h3><p>1h30, groupe de 8 (équipement prêté)<br><b>Kit :</b> serviette microfibre</p></div></article>
+      <article class="sport reveal"><img src="assets/img/hip-hop.jpg" alt="Un groupe de danseurs de hip-hop" loading="lazy"><span class="m">Novembre</span><div class="c"><h3>Danse hip-hop</h3><p>1h15, groupe de 12<br><b>Kit :</b> bandeau sport</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- Paris -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="banner-photo reveal">
+      <img src="assets/img/paris.jpg" alt="Des coureurs passent devant l'Arc de Triomphe à Paris" loading="lazy">
+      <div class="in">
+        <div class="eyebrow" style="color:var(--peach)">Près de chez toi</div>
+        <h2>Paris et petite couronne, à deux pas de chez toi</h2>
+        <p>Les séances ont lieu dans des salles et clubs partenaires de Paris (75), des Hauts-de-Seine (92), de la Seine-Saint-Denis (93) et du Val-de-Marne (94). Chaque mois, 4 créneaux au choix : en semaine le soir ou le week-end.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Formules -->
+<section class="alt" id="offres">
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:52px">
+      <div class="eyebrow">Les formules</div>
+      <h2>Choisis ta façon de tester</h2>
+      <p class="lead">Prix TTC (TVA 20 % incluse), prix HT indiqués en dessous. Livraison du kit incluse en France métropolitaine.</p>
+    </div>
+    <div class="pricing">
+      <div class="price-card reveal">
         <h3>Déclic Mensuel</h3>
+        <div class="for">Pour tester à ton rythme</div>
         <div class="price">39 €<small> TTC/mois</small></div>
         <div class="ht">soit 32,50 € HT · sans engagement</div>
         <ul class="list">
@@ -100,9 +168,10 @@
         </ul>
         <a class="btn secondary" href="commande.html?formule=mensuel">Choisir Mensuel</a>
       </div>
-      <div class="card price-card featured">
+      <div class="price-card featured reveal">
         <span class="badge">Le plus choisi</span>
         <h3>Déclic Trimestre</h3>
+        <div class="for">3 sports d'affilée, ou à offrir</div>
         <div class="price">105 €<small> TTC</small></div>
         <div class="ht">pour 3 mois, soit 35 € TTC/mois (87,50 € HT)</div>
         <ul class="list">
@@ -114,8 +183,9 @@
         </ul>
         <a class="btn" href="commande.html?formule=trimestre">Choisir Trimestre</a>
       </div>
-      <div class="card price-card">
+      <div class="price-card reveal">
         <h3>Déclic Duo</h3>
+        <div class="for">Parce qu'on ose plus à deux</div>
         <div class="price">69 €<small> TTC/mois</small></div>
         <div class="ht">pour 2 personnes, soit 57,50 € HT · sans engagement</div>
         <ul class="list">
@@ -129,10 +199,10 @@
       </div>
     </div>
 
-    <div class="grid g2" style="margin-top:28px">
-      <div class="card">
-        <h3>✅ Ce qui est inclus</h3>
-        <ul class="list">
+    <div class="grid g2" style="margin-top:44px">
+      <div class="card reveal">
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:12px"><span class="ic-badge green"><svg class="ic"><use href="assets/icons.svg#check"/></svg></span><h3 style="margin:0">Ce qui est inclus</h3></div>
+        <ul class="list" style="margin:0">
           <li>La séance d'initiation (coach diplômé, groupe de 8 à 12 débutants)</li>
           <li>Le prêt ou la location du gros matériel pendant la séance (raquette, roller, paddle, fleuret…)</li>
           <li>Le kit de petit matériel envoyé chez toi</li>
@@ -140,9 +210,9 @@
           <li>La réduction de 15 % pour t'inscrire ensuite dans la salle du mois</li>
         </ul>
       </div>
-      <div class="card">
-        <h3>❌ Ce qui n'est pas inclus</h3>
-        <ul class="list no">
+      <div class="card reveal">
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:12px"><span class="ic-badge"><svg class="ic"><use href="assets/icons.svg#info"/></svg></span><h3 style="margin:0">Ce qui n'est pas inclus</h3></div>
+        <ul class="list no" style="margin:0">
           <li>Le transport jusqu'à la salle</li>
           <li>Les séances supplémentaires (option à 15 € TTC la séance)</li>
           <li>Ta tenue de sport et tes chaussures</li>
@@ -154,11 +224,42 @@
   </div>
 </section>
 
-<section class="alt" id="faq">
+<!-- Témoignages -->
+<section>
   <div class="wrap">
-    <div class="eyebrow">FAQ</div>
-    <h2>Questions fréquentes</h2>
-    <div style="margin-top:20px;max-width:820px">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">Après la séance test</div><h2>« Je n'aurais jamais osé seul·e »</h2></div>
+      <p class="lead small">Témoignages <strong>fictifs</strong>, rédigés pour la démo à partir des profils du CRM.</p>
+    </div>
+    <div class="quotes">
+      <figure class="quote reveal" style="margin:0">
+        <div class="stars"><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg></div>
+        <blockquote>« J'avais peur d'être la seule débutante. On était huit à n'avoir jamais grimpé, et le coach a été top. »</blockquote>
+        <figcaption class="who"><i style="background:var(--accent)">I</i><div><b>Inès, 28 ans</b><span>Montreuil · formule Mensuelle</span></div></figcaption>
+      </figure>
+      <figure class="quote reveal" style="margin:0">
+        <div class="stars"><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg></div>
+        <blockquote>« Le kit est arrivé avec le guide : je savais quoi mettre et à quelle heure venir. Zéro prise de tête. »</blockquote>
+        <figcaption class="who"><i style="background:var(--forest)">T</i><div><b>Thomas, 31 ans</b><span>Paris 15e · formule Mensuelle</span></div></figcaption>
+      </figure>
+      <figure class="quote reveal" style="margin:0">
+        <div class="stars"><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg><svg class="ic"><use href="assets/icons.svg#star"/></svg></div>
+        <blockquote>« On l'a pris en Duo avec ma compagne. On n'aurait jamais testé la boxe sans ça. »</blockquote>
+        <figcaption class="who"><i style="background:var(--ink)">H</i><div><b>Hugo, 33 ans</b><span>Boulogne-Billancourt · formule Duo</span></div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="alt" id="faq">
+  <div class="wrap faq-grid">
+    <div class="reveal">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions fréquentes</h2>
+      <p class="lead">Tu ne trouves pas ta réponse ? <a href="#contact">Écris-nous</a>, on répond sous 24 h ouvrées.</p>
+    </div>
+    <div class="reveal">
       <details><summary>Je n'ai jamais fait de sport, c'est pour moi ?</summary><p>Oui. Chaque séance est une initiation pour débutants complets, en petit groupe et sans esprit de compétition. Le coach adapte les exercices à ton niveau.</p></details>
       <details><summary>Où ont lieu les séances ?</summary><p>Dans des salles et clubs partenaires à Paris et en petite couronne (92, 93, 94). À la commande, tu indiques ton secteur et on te propose le créneau le plus proche.</p></details>
       <details><summary>Je ne suis pas disponible au créneau proposé, je fais comment ?</summary><p>Chaque mois, 4 créneaux sont proposés (semaine en soirée et week-end). Tu peux changer de créneau jusqu'à 48 h avant la séance depuis ton espace.</p></details>
@@ -170,24 +271,27 @@
   </div>
 </section>
 
+<!-- Contact -->
 <section id="contact">
-  <div class="wrap grid g2" style="align-items:start">
-    <div>
+  <div class="wrap contact">
+    <div class="reveal">
       <div class="eyebrow">Contact</div>
       <h2>Une question ? Écris-nous</h2>
-      <p class="muted">Réponse sous 24 h ouvrées. Pour les entreprises et CSE qui veulent offrir Déclic à leurs équipes, précise-le dans ton message.</p>
-      <p><strong>E-mail :</strong> bonjour@declic-demo.fr <span class="small muted">(adresse fictive, démo)</span><br>
-      <strong>Instagram / TikTok :</strong> @declic.box <span class="small muted">(comptes fictifs, démo)</span></p>
+      <p class="lead">Réponse sous 24 h ouvrées. Pour les entreprises et CSE qui veulent offrir Déclic à leurs équipes, précise-le dans ton message.</p>
+      <div class="contact-info">
+        <div><span class="ic-badge"><svg class="ic"><use href="assets/icons.svg#mail"/></svg></span><div><b>bonjour@declic-demo.fr</b><br><span class="small muted">adresse fictive, démo</span></div></div>
+        <div><span class="ic-badge"><svg class="ic"><use href="assets/icons.svg#instagram"/></svg></span><div><b>@declic.box</b> sur Instagram et TikTok<br><span class="small muted">comptes fictifs, démo</span></div></div>
+      </div>
     </div>
-    <form class="card" id="contactForm">
+    <form class="card reveal" id="contactForm" style="padding:30px">
       <div class="form-row">
         <div><label for="cPrenom">Prénom</label><input id="cPrenom" required placeholder="Ex. Léa"></div>
         <div><label for="cNom">Nom</label><input id="cNom" required placeholder="Ex. Martin"></div>
       </div>
       <label for="cMail">E-mail</label><input id="cMail" type="email" required placeholder="lea.martin@exemple.fr">
       <label for="cMsg">Message</label><textarea id="cMsg" rows="4" required placeholder="Ta question…"></textarea>
-      <p class="notice small" style="margin-top:12px">Démo : utilise des données fictives. Le message arrive comme prospect dans le CRM (stocké uniquement dans ton navigateur).</p>
-      <button class="btn" type="submit">Envoyer</button>
+      <p class="notice small" style="margin-top:14px">Démo : utilise des données fictives. Le message arrive comme prospect dans le CRM (stocké uniquement dans ton navigateur).</p>
+      <button class="btn" type="submit" style="margin-top:6px">Envoyer <svg class="ic"><use href="assets/icons.svg#arrow"/></svg></button>
       <div id="contactOk" class="success" style="display:none;margin-top:12px">Merci ! Ton message a bien été envoyé (démo). Il apparaît dans le <a href="crm.html">CRM</a>, étape « Nouveau ».</div>
     </form>
   </div>
@@ -205,10 +309,13 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
 
 </main>
 <footer class="site-footer">
-  <div class="wrap">
-    <div><strong style="color:#fff">Déclic</strong> · La box sport découverte · Paris & petite couronne<br>
-    Projet étudiant INSEEC (Master 2 Management du Sport & Innovations), démo sans vente réelle : aucun paiement, aucune donnée réelle.</div>
-    <div><a href="index.html">Vente</a> · <a href="crm.html">CRM</a> · <a href="strategie.html">Stratégie</a> · <a href="communication.html">Communication</a></div>
+  <div class="wrap foot">
+    <div class="foot-grid">
+      <div><div class="foot-brand"><img src="assets/logo.svg" alt="">déclic</div><p>La box sport découverte de Paris et de la petite couronne. Chaque mois, un nouveau sport à tester, sans engagement.</p></div>
+      <div class="foot-col"><h4>Le site</h4><a href="index.html">Vente</a><a href="crm.html">CRM</a><a href="strategie.html">Stratégie</a><a href="communication.html">Communication</a></div>
+      <div class="foot-col"><h4>Infos</h4><a href="index.html#offres">Formules</a><a href="index.html#faq">FAQ</a><a href="index.html#contact">Contact</a><a href="communication.html#credits">Crédits photos</a></div>
+    </div>
+    <div class="foot-bottom"><span>Projet étudiant INSEEC (Master 2 Management du Sport &amp; Innovations), démo sans vente réelle : aucun paiement, aucune donnée réelle.</span><span>Photos : Unsplash</span></div>
   </div>
 </footer>
 </body>

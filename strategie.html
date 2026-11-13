@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dossier stratégique · Déclic</title>
 <meta name="description" content="Déclic : chaque mois, un nouveau sport à tester à Paris avec une séance d'initiation encadrée, un kit et un guide. Projet étudiant INSEEC en mode démo.">
+<meta name="theme-color" content="#15130F">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script src="assets/app.js"></script>
 </head>
@@ -16,13 +17,13 @@
 <div class="demo-banner" role="note">Projet étudiant INSEEC, démo sans vente réelle</div>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Logo Déclic">Déclic</a>
-    <button class="menu-btn" aria-label="Ouvrir le menu">Menu</button>
-    <nav class="nav"><a href="index.html" class="">Vente<span class="tag">Offre & achat</span></a><a href="crm.html" class="">CRM<span class="tag">Suivi clients</span></a><a href="strategie.html" class="active">Stratégie<span class="tag">Pourquoi Déclic</span></a><a href="communication.html" class="">Communication<span class="tag">Comment vendre</span></a></nav>
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">déclic</a>
+    <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
+    <nav class="nav"><a href="index.html">Vente</a><a href="crm.html">CRM</a><a href="strategie.html" class="active">Stratégie</a><a href="communication.html">Communication</a><a href="commande.html" class="nav-cta">Commander</a></nav>
   </div>
 </header>
 <main>
-<section class="page-head">
+<section class="page-head photo" style="background-image:url(assets/img/paris.jpg)">
   <div class="wrap">
     <div class="eyebrow" style="color:var(--lime)">Dossier stratégique</div>
     <h1>Pourquoi Déclic a sa place sur le marché</h1>
@@ -56,9 +57,9 @@
     <h2>Deux personas précis</h2>
     <div class="grid g2" style="margin-top:22px">
       <div class="card persona">
-        <div class="avatar" style="background:var(--coral)">C</div>
-        <div>
-          <h3>Camille, 27 ans · « la curieuse qui s'ennuie à la salle »</h3>
+        <div class="p-photo"><img src="assets/img/persona-camille.jpg" alt="Une jeune femme en tenue de sport en ville" loading="lazy"><span class="tagline">« La curieuse qui s’ennuie à la salle »</span></div>
+        <div class="p-body">
+          <h3>Camille, 27 ans</h3>
           <dl class="facts">
             <dt>Métier</dt><dd>Chargée de communication dans une agence, Paris 11e</dd>
             <dt>Revenus</dt><dd>Environ 2 300 € net/mois</dd>
@@ -71,9 +72,9 @@
         </div>
       </div>
       <div class="card persona">
-        <div class="avatar" style="background:var(--navy)">M</div>
-        <div>
-          <h3>Mehdi, 33 ans · « le sédentaire qui veut s'y remettre à deux »</h3>
+        <div class="p-photo"><img src="assets/img/persona-mehdi.jpg" alt="Un homme fatigué devant son ordinateur portable" loading="lazy"><span class="tagline">« Le sédentaire qui veut s’y remettre à deux »</span></div>
+        <div class="p-body">
+          <h3>Mehdi, 33 ans</h3>
           <dl class="facts">
             <dt>Métier</dt><dd>Chef de projet informatique, 3 jours de télétravail, Boulogne-Billancourt</dd>
             <dt>Revenus</dt><dd>Environ 3 200 € net/mois</dd>
@@ -86,7 +87,7 @@
         </div>
       </div>
     </div>
-    <p class="small muted" style="margin-top:12px">Personas construits à partir des tendances du baromètre INJEP 2025 ; prénoms, revenus et budgets sont des hypothèses de travail.</p>
+    <p class="small muted" style="margin-top:12px">Personas construits à partir des tendances du baromètre INJEP 2025 ; prénoms, revenus et budgets sont des hypothèses de travail. Photos d'illustration (Unsplash) : elles ne représentent pas les personnes décrites.</p>
   </div>
 </section>
 
@@ -196,9 +197,9 @@
     <div class="eyebrow">6. Le modèle économique</div>
     <h2>Un abonnement, trois sources de revenus</h2>
     <div class="grid g3" style="margin-top:22px">
-      <div class="card"><h3>💳 Abonnements</h3><p class="muted">Mensuel, Trimestre et Duo. C'est le cœur du chiffre d'affaires (environ 90 % visé).</p></div>
-      <div class="card"><h3>➕ Séances supplémentaires</h3><p class="muted">15 € TTC la séance pour refaire le sport du mois. Marge élevée, aucun kit à envoyer.</p></div>
-      <div class="card"><h3>🤝 Commission partenaires</h3><p class="muted">10 % de commission (à négocier) quand un abonné s'inscrit dans la salle du mois avec sa réduction Déclic.</p></div>
+      <div class="card"><span class="ic-badge" style="margin-bottom:14px"><svg class="ic"><use href="assets/icons.svg#card"/></svg></span><h3>Abonnements</h3><p class="muted">Mensuel, Trimestre et Duo. C'est le cœur du chiffre d'affaires (environ 90 % visé).</p></div>
+      <div class="card"><span class="ic-badge" style="margin-bottom:14px"><svg class="ic"><use href="assets/icons.svg#plus"/></svg></span><h3>Séances supplémentaires</h3><p class="muted">15 € TTC la séance pour refaire le sport du mois. Marge élevée, aucun kit à envoyer.</p></div>
+      <div class="card"><span class="ic-badge" style="margin-bottom:14px"><svg class="ic"><use href="assets/icons.svg#link"/></svg></span><h3>Commission partenaires</h3><p class="muted">10 % de commission (à négocier) quand un abonné s'inscrit dans la salle du mois avec sa réduction Déclic.</p></div>
     </div>
 
     <div class="grid g2" style="margin-top:22px">
@@ -268,10 +269,13 @@ Coût d'acquisition maximum visé
 
 </main>
 <footer class="site-footer">
-  <div class="wrap">
-    <div><strong style="color:#fff">Déclic</strong> · La box sport découverte · Paris & petite couronne<br>
-    Projet étudiant INSEEC (Master 2 Management du Sport & Innovations), démo sans vente réelle : aucun paiement, aucune donnée réelle.</div>
-    <div><a href="index.html">Vente</a> · <a href="crm.html">CRM</a> · <a href="strategie.html">Stratégie</a> · <a href="communication.html">Communication</a></div>
+  <div class="wrap foot">
+    <div class="foot-grid">
+      <div><div class="foot-brand"><img src="assets/logo.svg" alt="">déclic</div><p>La box sport découverte de Paris et de la petite couronne. Chaque mois, un nouveau sport à tester, sans engagement.</p></div>
+      <div class="foot-col"><h4>Le site</h4><a href="index.html">Vente</a><a href="crm.html">CRM</a><a href="strategie.html">Stratégie</a><a href="communication.html">Communication</a></div>
+      <div class="foot-col"><h4>Infos</h4><a href="index.html#offres">Formules</a><a href="index.html#faq">FAQ</a><a href="index.html#contact">Contact</a><a href="communication.html#credits">Crédits photos</a></div>
+    </div>
+    <div class="foot-bottom"><span>Projet étudiant INSEEC (Master 2 Management du Sport &amp; Innovations), démo sans vente réelle : aucun paiement, aucune donnée réelle.</span><span>Photos : Unsplash</span></div>
   </div>
 </footer>
 </body>
